@@ -1,0 +1,27 @@
+#include <vector>
+
+vector<int> bit(int N){
+    static vector<int> vi;
+    if(N / 2 != 0)
+        bit(N/2);
+    vi.push_back(N%2);
+    return vi;
+}
+
+int solution(int N) {
+    vector<int> v = bit(N);
+    int prev(0);
+    int count(0);
+    int count_max(0);
+    for (unsigned it = 0; it < v.size(); ++it){
+        if ((v[it] == 0) && (prev == 0))
+            ++count;
+        if (v[it] == 1) {
+            if(count > count_max)
+                count_max = count;
+            count = 0;
+        }
+    }
+    return count_max;
+}
+

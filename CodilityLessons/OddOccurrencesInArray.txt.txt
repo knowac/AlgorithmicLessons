@@ -1,0 +1,15 @@
+#include <map>
+
+int solution(vector<int> &A) {
+    map<int,int> vi;
+    int ret = 0;
+    for(auto& it : A){
+        vi[it] += 1;
+    }
+    for(auto& it : vi){
+        if((it.second % 2) ==1){
+            ret = it.first;
+        }
+    }
+    return ret;
+}
